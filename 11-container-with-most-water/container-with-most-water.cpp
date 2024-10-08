@@ -1,23 +1,23 @@
 class Solution {
 public:
     int maxArea(vector<int>& height) {
-        int left = 0;
-        int right = height.size()-1;
-        int length = 0, breadth = 0;
-        int res = 0;
-        while (left < right){
-            length = min(height[left],height[right]);
-            breadth = right - left;
-            cout<<length<<" "<<breadth<<endl;
-            int curr = length*breadth;
-            res = max(res, curr);
-            if(height[left] > height[right]){
-                right--;
+        int maxArea = 0;
+        int start = 0;
+        int end = height.size()-1;
+
+        while(start < end){
+            int len = min(height[start], height[end]);
+            int d = end-start;
+            int curr = len*d;
+            maxArea = max(maxArea, curr);
+            if(height[start] > height[end]){
+                end--;
             }
             else{
-                left++;
+                start++;
             }
         }
-        return res;
+
+        return maxArea;
     }
 };
