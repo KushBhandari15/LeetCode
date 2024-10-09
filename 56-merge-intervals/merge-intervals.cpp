@@ -6,8 +6,9 @@ public:
         }
         vector<vector<int>> merged;
         sort(intervals.begin(),intervals.end());
-
-        for(int i=1;i<intervals.size();i++){
+        
+        int i=1;
+        while(i<intervals.size()){
             if(intervals[i][0] <= intervals[i-1][1]){
                 intervals[i][0] = min(intervals[i][0], intervals[i-1][0]);
                 intervals[i][1] = max(intervals[i][1], intervals[i-1][1]);
@@ -15,8 +16,9 @@ public:
             else{
                 merged.push_back(intervals[i-1]);
             }
+            i++;
         }
-        merged.push_back(intervals[intervals.size()-1]);
+        merged.push_back(intervals[i-1]);
         return merged;
     }
 };
