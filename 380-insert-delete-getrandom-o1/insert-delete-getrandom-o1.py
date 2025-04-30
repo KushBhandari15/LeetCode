@@ -1,21 +1,20 @@
-from collections import defaultdict
 class RandomizedSet(object):
 
     def __init__(self):
-        self.myDict = {}
-        self.size = 0
+        self.myMap = {}
+        self.list = []
+
     def insert(self, val):
         """
         :type val: int
         :rtype: bool
         """
-
-        if val in self.myDict:
+        if val in self.myMap:
             return False
-
-        self.myDict[val] = True
-        self.size += 1
-        return True
+        else:
+            self.list.append(val)
+            self.myMap[val] = len(self.list) - 1
+            return True
         
 
     def remove(self, val):
@@ -23,25 +22,24 @@ class RandomizedSet(object):
         :type val: int
         :rtype: bool
         """
-        if (val not in self.myDict):
+        if val not in self.myMap:
             return False
         
-        self.size -= 1
-        del self.myDict[val]
-        
-        return True
-        
+        index = self.myMap[val]
+        lastElement = self.list[-1]
+        self.list[index] = lastElement
+        self.myMap[lastElement] = index
+
+        self.list.pop()
+        del self.myMap[val]
+        return True        
 
     def getRandom(self):
         """
         :rtype: int
         """
-
-        if self.size <= 0:
-            return None
-        randomInt = random.randint(0, self.size-1)
-        key = list(self.myDict.keys())[randomInt]
-
+        randomNumber = random.randint(0, len(self.list)-1)
+        key = self.list[randomNumber]
         return key
         
 
