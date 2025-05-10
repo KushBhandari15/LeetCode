@@ -12,7 +12,7 @@ class Solution(object):
             current = strs[i]
             prev = strs[i-1]
             index = 0
-            while index < len(current) and index < len(prev):
+            while index < len(current) and index < len(prev) and index < res:
                 if (current[index] == prev[index]):
                     count += 1
                 else:
