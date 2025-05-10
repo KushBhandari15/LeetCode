@@ -6,7 +6,7 @@ class Solution(object):
         """
         
         size = len(strs)
-        res = 1000
+        res = 201
         for i in range (1, size):
             count = 0
             current = strs[i]
