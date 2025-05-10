@@ -9,17 +9,15 @@ class Solution(object):
         
         size = len(haystack)
 
+        if (haystack == needle):
+            return 0
+        
         for i in range(size):
             count = 0
-            temp = i
-            while temp < size:
-                if (haystack[temp] == needle[count]):
-                    count += 1
-                    temp += 1
-                else:
-                    break
-                
-                if (count == len(needle)):
-                    return i
-        
+            temp = i + len(needle)
+
+            print(i, " ", temp)
+            if (haystack[i:temp] == needle):
+                return i
+
         return -1
