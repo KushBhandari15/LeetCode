@@ -12,9 +12,7 @@ class Solution(object):
             current = n%10
             arr.append(current)
             n = n//10
-        
-        res = 0
-        
+                
         arr.sort()
         size = len(arr)
         if (len(arr) > 1):
