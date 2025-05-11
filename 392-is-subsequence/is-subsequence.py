@@ -6,17 +6,17 @@ class Solution(object):
         :rtype: bool
         """
         
-        p1, p2 = 0, 0
+        p1 = 0
 
         if (len(s) == 0):
             return True
-        while (p1 < len(s) and p2 < len(t)):
 
-            if (s[p1] == t[p2]):
+        for i in range(len(t)):
+
+            if (s[p1] == t[i]):
                 p1 += 1
                 if (p1 == len(s)):
                     return True
             
-            p2 += 1
         
         return False
