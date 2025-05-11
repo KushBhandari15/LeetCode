@@ -1,13 +1,25 @@
 class Solution(object):
     def isPalindrome(self, s):
-        l, r = 0, len(s)-1
+        """
+        :type s: str
+        :rtype: bool
+        """
+        
+        l, r = 0, len(s) - 1
+
         while l < r:
-            while l < r and not s[l].isalnum():
+
+            if (s[l].isalnum() == False):
                 l += 1
-            while l <r and not s[r].isalnum():
+            elif (s[r].isalnum() == False):
                 r -= 1
-            if s[l].lower() != s[r].lower():
-                return False
-            l +=1; r -= 1
-        return True
             
+            else:
+                if (s[l].lower() == s[r].lower()):
+                    l += 1
+                    r -= 1
+                else:
+                    print(s[l], " ", s[r])
+                    return False
+        
+        return True
