@@ -6,21 +6,23 @@ class Solution(object):
         :rtype: str
         """
         
-        if (numRows == 1):
+        if (numRows == 1 or numRows > len(s)):
             return s
-        size = len(s)
-        res = ""
 
+        rows = [""] * numRows
+        currentRow = 0
+        step = 1
+        for i in range (len(s)):
 
-        for r in range (numRows):
+            rows[currentRow] += s[i]
+
+            if currentRow == 0:
+                step = 1
+            elif currentRow == numRows-1 :
+                step = -1
             
-            increment = 2 * (numRows - 1)
-
-            for i in range (r, len(s), increment):
-
-                res += s[i]
-                if (r > 0  and r < numRows-1 and i+increment -2*r < len(s)):
-                    res += s[i + increment - 2*r ]
-
+            currentRow += step
         
-        return res
+
+        return ''.join(rows)
+
