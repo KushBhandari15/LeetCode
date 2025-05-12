@@ -24,4 +24,4 @@ class Solution(object):
                 start += 1
             
         
-        return 0  if res == float('inf') else res
+        return 0 if res == float('inf') else res
