@@ -12,7 +12,7 @@ class Solution(object):
             
             helper[s[end]] = helper.get(s[end], 0) + 1
 
-            while (len(helper)  != (end-start+1)):
+            while (len(helper) != (end-start+1)):
 
                 helper[s[start]] -= 1
                 if (helper[s[start]] <= 0):
