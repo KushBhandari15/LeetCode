@@ -23,8 +23,5 @@ class Solution(object):
                 rows[i].add(board[i][j])
                 cols[j].add(board[i][j])
                 box[boxNum].add(board[i][j])
-                # print(rows)
-                # print(cols)
-                print(box)
 
         return True
