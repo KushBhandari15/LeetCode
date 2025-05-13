@@ -5,25 +5,21 @@ class Solution(object):
         :rtype: int
         """
         
-        nums.sort()
-
-        if len(nums) == 0:
-            return 0
         
-        count = 1
-        maxCount = 1
-        for i in range (1, len(nums)):
-            
-            if (nums[i] == nums[i-1]+1):
-                count += 1
-            
-            elif (nums[i] == nums[i-1]):
-                continue
-            
-            else:
-                count = 1
+        helper = set(nums)
+        res = 0
 
-            maxCount = max(maxCount, count)
+        for i in helper:
+
+            if i-1 in helper: continue
+
+            j = 1
+
+            while i + j in helper:
+                j += 1
+            
+            res = max(res, j)
         
+        return res
 
-        return maxCount
+            
