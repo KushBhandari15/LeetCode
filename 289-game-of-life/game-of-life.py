@@ -5,9 +5,6 @@ class Solution(object):
         :rtype: None Do not return anything, modify board in-place instead.
         """
         
-
-        helper = set()
-
         row = len(board)
         col = len(board[0])
 
