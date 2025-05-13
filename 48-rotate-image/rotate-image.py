@@ -10,7 +10,7 @@ class Solution(object):
 
         # Transpose
         for i in range(row):
-            for j in range(i+1, row):
+            for j in range(i):
                 temp = matrix[i][j]
                 matrix[i][j] = matrix[j][i]
                 matrix[j][i] = temp
