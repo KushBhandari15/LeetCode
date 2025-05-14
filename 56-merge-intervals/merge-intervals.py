@@ -5,32 +5,26 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         
-        i = 1
         size = len(intervals)
-
-        res = []
         if (size < 2):
             return intervals
         
+        res = []
         intervals.sort()
-        prev = intervals[0]
+        i = 1
 
         while (i < size):
             
-            curr = intervals[i]
-            prevEnd = prev[1]
-            currStart = curr[0]
 
-            if (prevEnd >= currStart):
-                prev[0] = min(curr[0], prev[0])
-                prev[1] = max(curr[1], prev[1])
+            if (intervals[i-1][1] >= intervals[i][0]):
+                intervals[i][0] = min(intervals[i][0], intervals[i-1][0])
+                intervals[i][1] = max(intervals[i][1], intervals[i-1][1])
             
             else:
-                res.append(prev)
-                prev = curr
+                res.append(intervals[i-1])
             
             i += 1
 
-        res.append(prev)
+        res.append(intervals[i-1])
         
         return res
