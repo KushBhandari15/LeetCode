@@ -6,27 +6,20 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         
-        intervals.append(newInterval)
-
-        intervals.sort()
-
-        if len(intervals) == 0:
-            return []
-        i = 1
         res = []
-        while (i < len(intervals)):
-
-            if (intervals[i-1][1] >= intervals[i][0]):
-                intervals[i][0] = min(intervals[i][0], intervals[i-1][0])
-                intervals[i][1] = max(intervals[i][1], intervals[i-1][1])
-            
-            else:
-                res.append(intervals[i-1])
-
+        i = 0
+        while (i < len(intervals) and intervals[i][1] < newInterval[0]):
+            res.append(intervals[i])
             i += 1
         
+        while (i < len(intervals) and intervals[i][0] <= newInterval[1]):
+            newInterval[0] = min(newInterval[0], intervals[i][0])
+            newInterval[1] = max(newInterval[1], intervals[i][1])
+            i += 1
         
-        res.append(intervals[len(intervals)-1])
+        res.append(newInterval)
+
+        for j in range (i, len(intervals)):
+            res.append(intervals[j])
 
         return res
-
