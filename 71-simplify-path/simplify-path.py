@@ -5,23 +5,12 @@ class Solution(object):
         :rtype: str
         """
         
-        ref = path.split('/')
-        print(ref)
         stack = []
-        for d in ref:
-            if not d or d == ".":
-                continue
-            elif d == "..":
+        for d in path.split('/'):
+            if d == "..":
                 if stack:
                     stack.pop()
-            else:
+            elif d and d != ".":
                 stack.append(d)
         
-        res = ""
-        if not stack:
-            return "/"
-        else:
-            for i in stack:
-                res += "/" + i
-
-        return res
+        return "/" + "/".join(stack)
