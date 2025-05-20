@@ -14,8 +14,7 @@ class Solution:
         while fast and fast.next:
 
             curr = curr.next
-            fast = fast.next
-            fast = fast.next
+            fast = fast.next.next
 
             if (curr == fast):
                 return True
