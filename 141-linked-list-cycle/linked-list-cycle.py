@@ -9,8 +9,7 @@ class Solution:
 
         if (head == None):
             return False
-        curr = head
-        fast = head
+        curr, fast = head, head
 
         while fast and fast.next:
 
