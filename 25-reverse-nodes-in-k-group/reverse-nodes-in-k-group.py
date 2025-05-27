@@ -12,7 +12,7 @@ class Solution:
         helper = []
         curr = head
         while (curr != None):
-            helper.append(ListNode(curr.val))
+            helper.append(curr)
             curr = curr.next
         
         index = 0
