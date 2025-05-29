@@ -6,27 +6,28 @@
 class Solution:
     def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
         
-        helper = {}
-
         res = ListNode()
         resNode = res
 
         curr = head
+        prev = -101
+        count = 0
+        while (curr != None):
 
-        while (curr != None):
-            
-            helper[curr.val] = helper.get(curr.val, 0) + 1
-            curr = curr.next
-        
-        
-        curr = head
-        
-        while (curr != None):
-            
-            if helper[curr.val] == 1:
-                resNode.next = ListNode(curr.val)
-                resNode = resNode.next
+            if (prev != curr.val or prev == -101):
+                if (count == 1):
+                    resNode.next = ListNode(prev)
+                    resNode = resNode.next
+                prev = curr.val
+                count = 1
+            else:
+                count += 1
             
             curr = curr.next
+        
+        if (count == 1):
+            resNode.next = ListNode(prev)
+            resNode = resNode.next
         
         return res.next
+
