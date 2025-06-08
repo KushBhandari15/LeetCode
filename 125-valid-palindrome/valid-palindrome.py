@@ -1,25 +1,26 @@
-class Solution(object):
-    def isPalindrome(self, s):
-        """
-        :type s: str
-        :rtype: bool
-        """
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+
+        if not s:
+            return True
         
-        l, r = 0, len(s) - 1
-
-        while l < r:
-
-            if (s[l].isalnum() == False):
-                l += 1
-            elif (s[r].isalnum() == False):
-                r -= 1
+        s = re.sub(r'[^a-zA-Z0-9]', '', s).lower()
+        print(s)
+        def palindrome(s, start, end):
             
-            else:
-                if (s[l].lower() == s[r].lower()):
-                    l += 1
-                    r -= 1
-                else:
-                    print(s[l], " ", s[r])
-                    return False
+            if (start >= end):
+                return True
+
+            if (s[start] != s[end]):
+                return False
+            
+            return palindrome(s, start+1, end-1)
+
+        return palindrome(s, 0, len(s)-1)
         
-        return True
+
+        
+
+            
+            
+        
