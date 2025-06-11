@@ -11,14 +11,14 @@ class Solution:
             return []
         
         result = []
-        queue = [root]
+        queue = deque([root])
 
         while queue:
             level = len(queue)
             elems = []
 
             for i in range (level):
-                curr = queue.pop(0)
+                curr = queue.popleft()
                 elems.append(curr.val)
                 if curr.left:
                     queue.append(curr.left)
