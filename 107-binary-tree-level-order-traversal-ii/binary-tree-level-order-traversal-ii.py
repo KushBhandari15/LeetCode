@@ -25,6 +25,6 @@ class Solution:
                 if curr.right:
                     queue.append(curr.right)
             
-            result.append(elems)
+            result.insert(0, elems)
         
-        return result[::-1]
+        return result
