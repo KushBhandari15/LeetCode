@@ -9,30 +9,17 @@ class Solution:
         
         if not root:
             return None
-        
+
         def helper(node):
 
             if not node:
                 return None
             
-            currLeft = node.left
-            currRight = node.right
+            node.left = helper(node.left)
+            node.right = helper(node.right)
 
-            if currLeft:
-                node.right = currLeft
-            else:
-                node.right= None
-            if currRight:
-                node.left = currRight
-            else:
-                node.left = None
-
-            helper(node.left)
-            helper(node.right)
-
+            node.left, node.right = node.right, node.left
+            
             return node
-        
+            
         return helper(root)
-        
-        
-        
