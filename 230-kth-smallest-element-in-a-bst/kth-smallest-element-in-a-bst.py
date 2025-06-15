@@ -7,13 +7,17 @@
 class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
         
-        arr = []
-        def helper(node, arr):
-            
+        index = 0
+        result = 0
+        def helper(node):
+            nonlocal index
+            nonlocal result
             if node:
-                helper(node.left, arr)
-                arr.append(node.val)
-                helper(node.right, arr)
+                helper(node.left)
+                index += 1
+                if index == k:
+                    result = node.val
+                helper(node.right)
         
-        helper(root, arr)
-        return arr[k-1]
+        helper(root)
+        return result
