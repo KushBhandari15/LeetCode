@@ -13,8 +13,7 @@ class Solution:
                 return None
             
             mid = (start + end) //2
-            curr = nums[mid]
-            node = TreeNode(curr)
+            node = TreeNode(nums[mid])
 
             node.left = helper(start, mid, nums)
             node.right = helper(mid+1, end, nums)
