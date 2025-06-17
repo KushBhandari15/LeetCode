@@ -7,17 +7,16 @@
 class Solution:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
         
-        if (p == None and q == None):
-            return True
-        elif (p == None or q == None):
-            return False
-        elif (p.val != q.val):
-            return False
-
-        left = self.isSameTree(p.left, q.left)
-        right = self.isSameTree(p.right, q.right)
-
-        if left and right:
-            return True
-        else:
-            return False
+        def helper(p, q):
+            
+            if not p and not q:
+                return True
+            if not p or not q:
+                return False
+            if p.val != q.val:
+                print(p.val, q.val)
+                return False
+            
+            return helper(p.left, q.left) and helper(p.right, q.right)
+        
+        return helper(p, q)
