@@ -7,18 +7,18 @@
 class Solution:
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
         
-
-        def helper(n1, n2):
-
-            if not n1 and not n2:
-                return True
-            if not n1 or not n2:
-                return False
-            
-            if n1.val != n2.val:
-                return False
-            
-            return helper(n1.left, n2.right) and helper(n1.right, n2.left)
+        if not root:
+            return False
         
+        def helper(p, q):
+            
+            if not p and not q:
+                return True
+            if not p or not q:
+                return False
+            if p.val != q.val:
+                return False
+            
+            return helper(p.left, q.right) and helper(p.right, q.left)
         
         return helper(root.left, root.right)
