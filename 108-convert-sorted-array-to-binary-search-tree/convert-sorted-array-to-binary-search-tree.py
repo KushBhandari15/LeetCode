@@ -5,37 +5,20 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-
-    def __init__(self):
-
-        self.root = None
-    def insert(self, val):
-
-        def helper(node, val):
-            if not node:
-                return TreeNode(val)
-            
-            if node.val > val:
-                node.left = helper(node.left, val)
-            else:
-                node.right = helper(node.right, val)
-            
-            return node
-        
-        self.root = helper(self.root, val)
-    
     def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
         
-        def helper(nums, start, end):
+        def helper(start, end, nums):
 
             if start >= end:
-                return
+                return None
+            
+            mid = (start + end) //2
+            curr = nums[mid]
+            node = TreeNode(curr)
 
-            mid = (start+end) // 2
-            self.insert(nums[mid])
-            helper(nums, start, mid)
-            helper(nums, mid+1, end)
+            node.left = helper(start, mid, nums)
+            node.right = helper(mid+1, end, nums)
 
+            return node
         
-        helper(nums, 0, len(nums))
-        return self.root
+        return helper(0, len(nums), nums)
