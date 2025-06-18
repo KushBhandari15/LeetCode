@@ -16,12 +16,15 @@ class Solution:
             
             curr += str(node.val)
 
-            if not node.right and not node.left:
+            if not node.left and not node.right:
                 res.append(curr)
-                return
 
-            left = helper(node.left, curr+"->")
-            right = helper(node.right, curr + "->")
+            if node.left:
+                helper(node.left, curr+"->")
+            if node.right:
+                helper(node.right, curr+"->")
+        
+        helper(root, "")
+        return res
 
-        helper(root,  "")
-        return res 
+            
