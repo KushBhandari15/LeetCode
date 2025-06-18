@@ -9,7 +9,7 @@ class Solution:
         
         if not root:
             return None
-
+        
         def helper(node):
 
             if not node:
@@ -19,7 +19,7 @@ class Solution:
             node.right = helper(node.right)
 
             node.left, node.right = node.right, node.left
-            
+        
             return node
-            
+        
         return helper(root)
