@@ -17,9 +17,9 @@ class Solution:
             left = helper(node.left)
             right = helper(node.right)
 
-            res = max(res, left+right+1)
+            res = max(res, left+right)
             return max(left, right) + 1
         
         helper(root)
-        return res - 1
+        return res
 
