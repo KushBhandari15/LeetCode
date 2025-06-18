@@ -10,17 +10,17 @@ class Solution:
         if not root or (not root.left and not root.right):
             return 0
 
-        def helper(node, res, isLeft):
-
+        res = 0
+        def helper(node, isLeft):
+            nonlocal res
             if not node:
-                return res
+                return
             
             if not node.left and not node.right and isLeft:
                 res += node.val
 
-            res = helper(node.left, res, True)
-            res = helper(node.right, res, False)
+            helper(node.left, True)
+            helper(node.right, False)
 
-            return res
-
-        return helper(root, 0, False)
+        helper(root, False)
+        return res
