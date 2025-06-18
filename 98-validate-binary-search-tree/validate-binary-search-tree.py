@@ -7,8 +7,10 @@
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         
+        if not root:
+            return True
+        
         def helper(node, low, high):
-
             if not node:
                 return True
             
@@ -16,10 +18,10 @@ class Solution:
                 return False
             if high is not None and node.val >= high:
                 return False
-            
-            leftTree = helper(node.left, low, node.val)
-            rightTree = helper(node.right, node.val, high)
-        
-            return leftTree and rightTree
+            left = helper(node.left, low, node.val)
+            right = helper(node.right, node.val, high)
+
+            return left and right
         
         return helper(root, None, None)
+            
