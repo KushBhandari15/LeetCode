@@ -7,19 +7,19 @@
 class Solution:
     def getMinimumDifference(self, root: Optional[TreeNode]) -> int:
         res = float('inf')
-        arr = []
+        prev = None
+
         def helper(node):
-            nonlocal arr
+            nonlocal prev
+            nonlocal res
             if node:
                 helper(node.left)
-                arr.append(node.val)
+                if prev is not None:
+                    res = min(res, abs(node.val-prev))
+                prev = node.val
                 helper(node.right)
         
         helper(root)
-        for i in range (1, len(arr)):
-            res = min(res, abs(arr[i]-arr[i-1]))
-            if res == 0:
-                return 0
         
         return res
         
