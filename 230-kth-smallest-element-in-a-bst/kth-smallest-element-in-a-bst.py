@@ -17,5 +17,4 @@ class Solution:
                 helper(node.right)
         
         helper(root)
-        arr.sort()
         return arr[k-1]
